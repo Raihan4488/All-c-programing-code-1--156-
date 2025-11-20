@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int N, i, j, isPrime;
+
+    printf("Enter value of N: ");
+    scanf("%d", &N);
+
+    printf("Prime numbers from 1 to %d are:\n", N);
+
+    for (i = 2; i <= N; i++) {
+        isPrime = 1;  // assume number is prime
+
+        // check divisibility
+        for (j = 2; j*j <= i; j++) {
+            if (i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if (isPrime)
+            printf("%d ", i);
+    }
+
+    printf("\n");
+    return 0;
+}
