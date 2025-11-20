@@ -1,1 +1,7 @@
+#include <stdio.h>
 
+int main(void) {
+    // replace "RJ Raihan" with your own name
+    printf("My name is RJ Raihan\n");
+    return 0;
+}
