@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    char ch;
+    int num;
+
+    printf("Enter a character: ");
+    scanf(" %c", &ch); // Space before %c to skip any whitespace
+
+    num = (int)ch; // Convert char to its ASCII integer value
+
+    printf("Character '%c' as integer: %d\n", ch, num);
+
+    return 0;
+}
