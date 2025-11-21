@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+    char str[500];
+    int alphabet[26] = {0}; // To track each letter
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Convert to lowercase and mark letters
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (isalpha(str[i])) {
+            int index = tolower(str[i]) - 'a';
+            alphabet[index] = 1;
+        }
+    }
+
+    // Check if all letters are present
+    int isPangram = 1;
+    for (int i = 0; i < 26; i++) {
+        if (alphabet[i] == 0) {
+            isPangram = 0;
+            break;
+        }
+    }
+
+    if (isPangram)
+        printf("\nThe string is a pangram.\n");
+    else
+        printf("\nThe string is NOT a pangram.\n");
+
+    return 0;
+}
