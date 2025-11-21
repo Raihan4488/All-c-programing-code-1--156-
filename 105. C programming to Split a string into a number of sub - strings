@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200], delimiter[10];
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0'; // Remove newline
+
+    printf("Enter a delimiter (e.g., space, comma): ");
+    fgets(delimiter, sizeof(delimiter), stdin);
+    delimiter[strcspn(delimiter, "\n")] = '\0';
+
+    // Use strtok to split the string
+    char *token = strtok(str, delimiter);
+
+    printf("\nSubstrings:\n");
+    while (token != NULL) {
+        printf("%s\n", token);
+        token = strtok(NULL, delimiter);
+    }
+
+    return 0;
+}
