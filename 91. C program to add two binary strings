@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+int main() {
+    char bin1[MAX], bin2[MAX], sum[MAX+1]; // +1 for possible carry
+    int i, j, k, carry = 0;
+
+    printf("Enter first binary string: ");
+    scanf("%s", bin1);
+
+    printf("Enter second binary string: ");
+    scanf("%s", bin2);
+
+    int len1 = strlen(bin1);
+    int len2 = strlen(bin2);
+
+    i = len1 - 1; // last index of bin1
+    j = len2 - 1; // last index of bin2
+    k = 0;        // index for sum (will reverse later)
+
+    // Add binary strings from right to left
+    while (i >= 0 || j >= 0 || carry) {
+        int bit1 = (i >= 0) ? bin1[i] - '0' : 0;
+        int bit2 = (j >= 0) ? bin2[j] - '0' : 0;
+
+        int s = bit1 + bit2 + carry;
+        sum[k++] = (s % 2) + '0';
+        carry = s / 2;
+
+        i--;
+        j--;
+    }
+
+    sum[k] = '\0';
+
+    // Reverse the result
+    for (int l = 0, m = k - 1; l < m; l++, m--) {
+        char temp = sum[l];
+        sum[l] = sum[m];
+        sum[m] = temp;
+    }
+
+    printf("\nSum of binary strings: %s\n", sum);
+
+    return 0;
+}
