@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    int r, c, i, j;
+
+    // Input rows and columns
+    printf("Enter number of rows: ");
+    scanf("%d", &r);
+
+    printf("Enter number of columns: ");
+    scanf("%d", &c);
+
+    int A[r][c], B[r][c];
+
+    // Input Matrix A
+    printf("Enter elements of Matrix A:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // Input Matrix B
+    printf("Enter elements of Matrix B:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    // Check equality
+    int isEqual = 1;  // assume equal
+
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            if (A[i][j] != B[i][j]) {
+                isEqual = 0;
+                break;
+            }
+        }
+    }
+
+    // Output result
+    if (isEqual)
+        printf("\nMatrices are Equal.\n");
+    else
+        printf("\nMatrices are NOT Equal.\n");
+
+    return 0;
+}
