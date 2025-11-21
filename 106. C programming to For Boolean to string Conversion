@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdbool.h> // for bool, true, false
+
+int main() {
+    bool flag;
+    char str[6]; // "true" or "false"
+
+    int input;
+    printf("Enter 0 (false) or 1 (true): ");
+    scanf("%d", &input);
+
+    if (input == 0)
+        flag = false;
+    else
+        flag = true;
+
+    // Convert boolean to string
+    if (flag)
+        strcpy(str, "true");
+    else
+        strcpy(str, "false");
+
+    printf("Boolean as string: %s\n", str);
+
+    return 0;
+}
