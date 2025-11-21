@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    double num;
+    char str[50];
+
+    printf("Enter a double number: ");
+    scanf("%lf", &num);
+
+    // Convert double to string
+    sprintf(str, "%lf", num);  // Default 6 decimal places
+
+    printf("Double as string: %s\n", str);
+
+    // Optional: limit decimal places
+    sprintf(str, "%.4lf", num); // 4 decimal places
+    printf("Double as string (4 decimals): %s\n", str);
+
+    return 0;
+}
