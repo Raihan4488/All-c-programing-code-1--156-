@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    char ch;
+
+    printf("Enter an integer (0-127): ");
+    scanf("%d", &num);
+
+    if (num < 0 || num > 127) {
+        printf("Integer out of ASCII range!\n");
+    } else {
+        ch = (char)num; // Convert int to char
+        printf("Integer %d as character: %c\n", num, ch);
+    }
+
+    return 0;
+}
