@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define structure for student
+struct Student {
+    char name[50];
+    int age;
+    char department[50];
+    float gpa;
+};
+
+// Function to swap two student records
+void swap(struct Student *a, struct Student *b) {
+    struct Student temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int n;
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    struct Student students[n];
+
+    // Input student details
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details for student %d:\n", i + 1);
+
+        printf("Name: ");
+        scanf(" %[^\n]s", students[i].name); // Read string with spaces
+
+        printf("Age: ");
+        scanf("%d", &students[i].age);
+
+        printf("Department: ");
+        scanf(" %[^\n]s", students[i].department);
+
+        printf("GPA: ");
+        scanf("%f", &students[i].gpa);
+    }
+
+    // Sort students by name using Bubble Sort
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (strcmp(students[j].name, students[j + 1].name) > 0) {
+                swap(&students[j], &students[j + 1]);
+            }
+        }
+    }
+
+    // Display sorted student details
+    printf("\nStudent Records Sorted by Name:\n");
+    for (int i = 0; i < n; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Name: %s\n", students[i].name);
+        printf("Age: %d\n", students[i].age);
+        printf("Department: %s\n", students[i].department);
+        printf("GPA: %.2f\n", students[i].gpa);
+    }
+
+    return 0;
+}
