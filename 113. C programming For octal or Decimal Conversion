@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char octalStr[20];
+    int decimal;
+
+    printf("Enter an octal number: ");
+    scanf("%s", octalStr);
+
+    // Convert octal string to decimal integer
+    decimal = strtol(octalStr, NULL, 8);
+
+    printf("Octal %s as decimal: %d\n", octalStr, decimal);
+
+    return 0;
+}
