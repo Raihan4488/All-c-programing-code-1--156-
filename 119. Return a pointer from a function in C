@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+char* getMessage() {
+    static char message[] = "Hello from function!";
+    return message; // safe because it's static
+}
+
+int main() {
+    char *ptr = getMessage();
+    printf("Message: %s\n", ptr);
+    return 0;
+}
