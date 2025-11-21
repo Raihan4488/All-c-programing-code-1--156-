@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char hexStr[20];
+    int decimal;
+
+    printf("Enter a hexadecimal number (e.g., 1A3F): ");
+    scanf("%s", hexStr);
+
+    // Convert hexadecimal string to decimal integer
+    decimal = (int)strtol(hexStr, NULL, 16);
+
+    printf("Hexadecimal %s as decimal: %d\n", hexStr, decimal);
+
+    return 0;
+}
