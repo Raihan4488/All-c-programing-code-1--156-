@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+// Function to find sum between two intervals
+int sumBetween(int a, int b) {
+    int sum = 0;
+
+    for (int i = a; i <= b; i++) {
+        sum += i;
+    }
+
+    return sum;
+}
+
+int main() {
+    int start, end, result;
+
+    printf("Enter two intervals: ");
+    scanf("%d %d", &start, &end);
+
+    result = sumBetween(start, end);
+
+    printf("Sum between %d and %d = %d\n", start, end, result);
+
+    return 0;
+}
