@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+struct Student {
+    int id;
+    int age;
+    char name[50];
+};
+
+// Function to sort by ID
+void sortByID(struct Student s[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (s[i].id > s[j].id) {
+                struct Student temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+}
+
+// Function to sort by Age
+void sortByAge(struct Student s[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (s[i].age > s[j].age) {
+                struct Student temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    struct Student s[100];
+    int n, choice;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    // Input student data
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details of student %d\n", i + 1);
+        printf("ID: ");
+        scanf("%d", &s[i].id);
+        printf("Age: ");
+        scanf("%d", &s[i].age);
+        printf("Name: ");
+        scanf("%s", s[i].name);
+    }
+
+    // Choose sorting method
+    printf("\nSort students by:\n1. ID\n2. Age\nEnter choice: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        sortByID(s, n);
+        printf("\nStudents sorted by ID:\n");
+    } else if (choice == 2) {
+        sortByAge(s, n);
+        printf("\nStudents sorted by Age:\n");
+    } else {
+        printf("Invalid choice!");
+        return 0;
+    }
+
+    // Print sorted data
+    printf("\nID\tAge\tName\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d\t%d\t%s\n", s[i].id, s[i].age, s[i].name);
+    }
+
+    return 0;
+}
