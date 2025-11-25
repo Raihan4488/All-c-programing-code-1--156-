@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student {
+    int n;        // number of marks
+    int marks[];  // flexible array member
+};
+
+int main() {
+    int n;
+    printf("Enter number of marks: ");
+    scanf("%d", &n);
+
+    // Allocate memory for structure + flexible array
+    struct Student *s = malloc(sizeof(struct Student) + n * sizeof(int));
+
+    s->n = n;
+
+    // Input marks
+    printf("Enter marks:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &s->marks[i]);
+    }
+
+    // Display marks
+    printf("\nEntered Marks:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", s->marks[i]);
+    }
+
+    free(s); // free memory
+    return 0;
+}
