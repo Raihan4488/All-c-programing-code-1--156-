@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+
+    // Create a temporary file
+    fp = tmpfile();
+
+    if (fp == NULL) {
+        printf("Unable to create temporary file!\n");
+        return 1;
+    }
+
+    // Write something to temp file
+    fputs("Hello Temporary File!", fp);
+
+    printf("Temporary file created successfully.\n");
+
+    // Close automatically deletes the file
+    fclose(fp);
+
+    return 0;
+}
