@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    printf("This will be printed.\n");
+
+    return 0;  // Program exits here
+
+    // The following line is unreachable
+    printf("This will never be printed.\n");
+
+    int a = 5;  // Unreachable code
+    a++;
+    
+    return 0;
+}
