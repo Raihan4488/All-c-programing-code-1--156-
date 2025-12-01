@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#include "unzip.h"
+
+int main() {
+    unzFile zip;
+    unz_file_info fileInfo;
+    char filename[256];
+    char zipName[100];
+
+    printf("Enter zip file name: ");
+    scanf("%s", zipName);
+
+    zip = unzOpen(zipName);
+    if (!zip) {
+        printf("Cannot open zip file.\n");
+        return 1;
+    }
+
+    if (unzGoToFirstFile(zip) != UNZ_OK) {
+        printf("No files found in zip.\n");
+        return 1;
+    }
+
+    while (1) {
+        unzGetCurrentFileInfo(zip, &fileInfo, filename, sizeof(filename), NULL, 0, NULL, 0);
+
+        printf("\n===== FILE: %s =====\n", filename);
+
+        if (unzOpenCurrentFile(zip) != UNZ_OK) {
+            printf("Error opening file.\n");
+            break;
+        }
+
+        char buffer[1024];
+        int bytes;
+
+        while ((bytes = unzReadCurrentFile(zip, buffer, sizeof(buffer))) > 0) {
+            fwrite(buffer, 1, bytes, stdout);   // print file content
+        }
+
+        unzCloseCurrentFile(zip);
+
+        if (unzGoToNextFile(zip) != UNZ_OK)
+            break;
+    }
+
+    unzClose(zip);
+    return 0;
+}
