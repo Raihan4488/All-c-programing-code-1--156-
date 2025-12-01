@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <time.h>
+#include <unistd.h>   // for sleep()
+
+int main() {
+    while (1) {
+        time_t now;
+        struct tm *t;
+
+        now = time(NULL);
+        t = localtime(&now);
+
+        printf("\r%02d:%02d:%02d",
+               t->tm_hour,
+               t->tm_min,
+               t->tm_sec);
+
+        fflush(stdout);   // force immediate print
+        sleep(1);         // wait 1 second
+    }
+
+    return 0;
+}
