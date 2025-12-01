@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int hour, minute;
+
+    printf("Enter time (HH MM): ");
+    scanf("%d %d", &hour, &minute);
+
+    int displayHour = hour;
+
+    char period[3];
+
+    if (hour == 0) {
+        displayHour = 12;
+        strcpy(period, "AM");
+    }
+    else if (hour == 12) {
+        displayHour = 12;
+        strcpy(period, "PM");
+    }
+    else if (hour > 12) {
+        displayHour = hour - 12;
+        strcpy(period, "PM");
+    }
+    else {
+        displayHour = hour;
+        strcpy(period, "AM");
+    }
+
+    printf("Formatted Time: %02d:%02d %s\n", displayHour, minute, period);
+
+    return 0;
+}
