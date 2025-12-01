@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int a = 10, b = 0;
+    int *ptr = NULL;
+
+    // 1. Division by zero (Floating-point exception)
+    // printf("Result: %d\n", a / b);
+
+    // 2. Null pointer dereference (Segmentation fault)
+    // printf("Value: %d\n", *ptr);
+
+    // 3. Array out of bounds (Undefined behavior)
+    int arr[3] = {1, 2, 3};
+    // printf("Out of bounds: %d\n", arr[5]);
+
+    // 4. Memory allocation failure
+    int *p = (int *)malloc(1000000000000 * sizeof(int));
+    if (p == NULL)
+        printf("Memory allocation failed!\n");
+
+    printf("Program executed till here.\n");
+
+    return 0;
+}
