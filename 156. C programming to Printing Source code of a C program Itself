@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int main() {
+    char *program = "/* Quine in C */\n#include <stdio.h>\n\nint main() {\n    char *program = %c%s%c;\n    printf(program, 34, program, 34);\n    return 0;\n}\n";
+    printf(program, 34, program, 34);
+    return 0;
+}
